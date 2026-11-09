@@ -1,8 +1,8 @@
-# dsh-plugin-workbench
+# dsh-plugcraft
 
 [English](README.md) · [更新日志](CHANGELOG.md) · [市场条目](market-entry.yml)
 
-**复用优先的插件创作工作台**，为 [DeepSeek Harness（DSH）](https://github.com/deepseek-ai/deepseek-harness) 而做。
+**Plugcraft（插件工坊）** 是 **复用优先的插件创作工作台**，为 [DeepSeek Harness（DSH）](https://github.com/deepseek-ai/deepseek-harness) 而做。
 
 它不会让 Agent 一上来就写插件代码，而是先回答一个问题：**这个需求真的需要新写一个插件吗？** 工作台会先澄清需求，依次检索本机已装插件、DSH 市场目录和 GitHub 里的现成实现，让你选择复用方式，最后才把真正缺失的部分交给独立子代理实现。整个过程显示在 DSH 侧栏的页面里，安装前还会做结构校验。
 
@@ -31,23 +31,23 @@
 
 前置条件：带 Web UI 的 DSH 配置（**dsh >= 0.2.1-rc.2**，已在 `0.2.2-rc.1` 实测），Node.js 22.19+ 或 24+。
 
-**从 GitHub 安装**（npm/市场发布前即可用）：
+**从 GitHub 安装**（首个 npm 版本发布前推荐）：
 
 ```sh
-dsh plugin --profile <profile> add github:lixian292/dsh-plugin-workbench
+dsh plugin --profile <profile> add github:lixian292/dsh-plugcraft
 ```
 
-**从 npm 安装**（scoped 包发布后）：
+**从 Release 压缩包安装**（不需要任何账号）：从 [最新 Release](https://github.com/lixian292/dsh-plugcraft/releases/latest) 下载 `.tgz` 后安装：
 
 ```sh
-dsh plugin --profile <profile> add @lixian292/dsh-plugin-workbench
+dsh plugin --profile <profile> add <压缩包路径或链接>/dsh-plugcraft-0.10.0.tgz
 ```
 
 **本地开发**：在 DSH 插件页按绝对路径安装本地 bundle，或通过 `plugin_manager` 工具执行 `install_bundle`。
 
-安装后打开左侧栏，点击 **插件工作台**；它与「插件」「插件市场」「上下文洞察」同组。
+安装后打开左侧栏，点击 **插件工坊**（英文界面为 **Plugcraft**）；它与「插件」「插件市场」「上下文洞察」同组。
 
-> 包名使用 scoped 形式 `@lixian292/dsh-plugin-workbench`：npm 上未加 scope 的 `dsh-plugin-workbench` 已被另一个已停止维护的无关插件占用。
+> npm 包（`dsh-plugcraft`）计划中；首次发布时 npm 注册不可用，因此现阶段以 GitHub 和 Release 压缩包为安装渠道。
 
 ## 快速上手
 

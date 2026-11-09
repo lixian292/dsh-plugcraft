@@ -2,7 +2,7 @@
 export const SKILL_DESCRIPTION =
   'Use when the user wants to build/add a DeepSeek Harness plugin, asks whether an existing DSH plugin already covers a need, or wants to extend one. Runs the reuse-first pipeline: clarify → search installed/market/GitHub → user decision → capability decomposition → build only the gaps. Prefer it over ad-hoc web research.'
 
-export const SKILL_CONTENT = `# Plugin Workbench
+export const SKILL_CONTENT = `# Plugcraft
 
 Reuse-first pipeline for authoring DeepSeek Harness (DSH) plugins. The Host tool \`plugin_workbench\` owns the task state and does the retrieval; this skill defines when and how to use it.
 

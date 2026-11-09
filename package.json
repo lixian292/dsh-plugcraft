@@ -1,15 +1,15 @@
 {
-  "name": "@lixian292/dsh-plugin-workbench",
-  "version": "0.9.1",
-  "description": "Reuse-first plugin authoring workbench for DeepSeek Harness (DSH): clarify the need, search installed plugins / market / GitHub for reusable implementations, decide, decompose the gaps, verify, then build.",
+  "name": "dsh-plugcraft",
+  "version": "0.10.0",
+  "description": "Plugcraft (dsh-plugcraft): a reuse-first plugin authoring workbench for DeepSeek Harness (DSH). Clarify the need, search installed plugins / market / GitHub for reusable implementations, decide, decompose the gaps, verify, then build.",
   "author": "lixian292",
-  "homepage": "https://github.com/lixian292/dsh-plugin-workbench",
+  "homepage": "https://github.com/lixian292/dsh-plugcraft",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lixian292/dsh-plugin-workbench.git"
+    "url": "git+https://github.com/lixian292/dsh-plugcraft.git"
   },
   "bugs": {
-    "url": "https://github.com/lixian292/dsh-plugin-workbench/issues"
+    "url": "https://github.com/lixian292/dsh-plugcraft/issues"
   },
   "type": "module",
   "main": "index.js",

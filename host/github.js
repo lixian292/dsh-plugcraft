@@ -5,7 +5,7 @@ import { workbenchDataDir } from './store.js'
 const TOKEN_ENV_NAMES = ['DSH_GITHUB_TOKEN', 'DSH_PLUGIN_WORKBENCH_GITHUB_TOKEN', 'GITHUB_TOKEN']
 const TOKEN_FILE_NAMES = ['github-token.txt', 'github_token.txt']
 const TOKEN_TTL_MS = 60 * 1000
-const USER_AGENT = 'dsh-plugin-workbench'
+const USER_AGENT = 'dsh-plugcraft'
 
 let cachedToken = { value: '', at: 0 }
 

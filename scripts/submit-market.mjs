@@ -18,11 +18,11 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const OWNER = 'lixian292'
-const REPO = 'dsh-plugin-workbench'
+const REPO = 'dsh-plugcraft'
 const REGISTRY_OWNER = 'awesome-dsh-plugin'
 const REGISTRY_REPO = 'awesome-dsh-plugin'
 const REGISTRY_BRANCH = 'main'
-const WORK_BRANCH = 'add-dsh-plugin-workbench'
+const WORK_BRANCH = 'add-dsh-plugcraft'
 const ENTRY_PATH = `data/plugins/${OWNER}__${REPO}.yml`
 const PLUGIN_URL = `https://github.com/${OWNER}/${REPO}`
 const MIN_AGE_MS = 24 * 60 * 60 * 1000
@@ -49,7 +49,7 @@ if (token === '') {
 const headers = {
   authorization: `Bearer ${token}`,
   accept: 'application/vnd.github+json',
-  'user-agent': 'dsh-plugin-workbench-submit',
+  'user-agent': 'dsh-plugcraft-submit',
   'x-github-api-version': '2022-11-28'
 }
 
@@ -152,7 +152,7 @@ async function upsertEntry() {
 
 function prBody() {
   return [
-    'Adds **dsh-plugin-workbench** to the list.',
+    'Adds **dsh-plugcraft** to the list.',
     '',
     `- Repository: ${PLUGIN_URL}`,
     '- `dsh.bundle` manifest: `package.json` declares `dsh.bundle.patch` -> `cordis.patch.yml` (host half) and `dsh.client` (browser half).',
@@ -190,7 +190,7 @@ async function main() {
   if (hasFlag('--pr')) {
     try {
       const pr = await api('POST', `/repos/${REGISTRY_OWNER}/${REGISTRY_REPO}/pulls`, {
-        title: 'Add dsh-plugin-workbench',
+        title: 'Add dsh-plugcraft',
         head: `${OWNER}:${WORK_BRANCH}`,
         base: REGISTRY_BRANCH,
         body: prBody(),

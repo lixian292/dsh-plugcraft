@@ -2,6 +2,14 @@
 
 All notable changes to `dsh-plugin-workbench` are documented here.
 
+## [0.10.0] - 2026-11-10
+
+### Changed
+
+- **Renamed the project to Plugcraft (`dsh-plugcraft`).** The previous name `dsh-plugin-workbench` was too generic and collided with unrelated plugins on npm and in the ecosystem. The GitHub repository, npm package (planned), bundle row, client module id and install commands all use the new name; `dsh-plugin-workbench` remains only as a historical reference in this changelog.
+- UI display name is **Plugcraft** in English and **插件工坊 / 插件工作台** in Chinese; the tool and skill keep their functional names (`plugin_workbench`, `plugin-workbench`).
+- Install channels for the first release are GitHub and GitHub Release tarballs; npm registration was unavailable, so `dsh-plugcraft` on npm is planned rather than published.
+
 ## [0.9.1] - 2026-11-09
 
 ### Changed

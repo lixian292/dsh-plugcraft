@@ -1,12 +1,12 @@
 window.__ModuleLoader__.load({
-  id: '@lixian292/dsh-plugin-workbench',
+  id: 'dsh-plugcraft',
   factory(require) {
     const React = require('react')
     const h = React.createElement
 
-    const NS = 'dsh-plugin-workbench'
+    const NS = 'dsh-plugcraft'
     const PANEL_ID = 'plugin-workbench'
-    const VERSION = '0.9.1'
+    const VERSION = '0.10.0'
     const BUILD = '2026-11-09'
     const API_PATH = '/workbench/api'
     const POLL_MS = 4000
@@ -131,8 +131,8 @@ window.__ModuleLoader__.load({
         'status.line': 'M4 · 真实任务数据与交接状态已接入。装好的插件会出现在左侧栏；在对话里描述需求即可开始一条新的工作台任务。'
       },
       en: {
-        'entry.title': 'Plugin Workbench',
-        'page.title': 'Plugin Workbench',
+        'entry.title': 'Plugcraft',
+        'page.title': 'Plugcraft',
         'page.subtitle': 'Reuse first, fill the gaps second, build last.',
         'page.back': 'Back to chat',
         'page.preview': 'M4 · v' + VERSION,
@@ -1148,7 +1148,7 @@ window.__ModuleLoader__.load({
           h(
             'footer',
             { className: 'pw-foot' },
-            h('span', {}, h('b', {}, 'dsh-plugin-workbench'), ' v' + VERSION + ' · ' + t('label.build') + ' ' + BUILD),
+            h('span', {}, h('b', {}, 'dsh-plugcraft'), ' v' + VERSION + ' · ' + t('label.build') + ' ' + BUILD),
             snapshot.dataDir !== '' ? h('span', { className: 'mono' }, snapshot.dataDir) : null,
             h('span', { className: 'spacer' }),
             h('span', {}, t('status.line'))

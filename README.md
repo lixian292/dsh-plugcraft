@@ -1,12 +1,12 @@
-# dsh-plugin-workbench
+# dsh-plugcraft
 
 [中文说明](README.zh.md) · [Changelog](CHANGELOG.md) · [Market entry](market-entry.yml)
 
-A **reuse-first plugin authoring workbench** for [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness).
+**Plugcraft** is a **reuse-first plugin authoring workbench** for [DeepSeek Harness (DSH)](https://github.com/deepseek-ai/deepseek-harness).
 
 Instead of letting the agent start writing plugin code immediately, the workbench first asks *"does this need a new plugin at all?"* — it clarifies the requirement, searches installed plugins, the DSH market catalog and GitHub for something reusable, asks you how to proceed, and only then builds the remaining gaps in an isolated sub-agent. Every step stays visible in a page in the DSH sidebar, and verification happens before anything is installed.
 
-![Plugin Workbench page](assets/screenshots/workbench.png)
+![Plugcraft page](assets/screenshots/workbench.png)
 
 ## Why
 
@@ -31,27 +31,27 @@ Most "make me a plugin" requests end up recreating something that already exists
 
 Requirements: a DSH profile with the Web UI (**dsh >= 0.2.1-rc.2**, tested on `0.2.2-rc.1`), Node.js 22.19+ or 24+.
 
-**From GitHub** (works before the npm/market release):
+**From GitHub** (recommended until the first npm release):
 
 ```sh
-dsh plugin --profile <profile> add github:lixian292/dsh-plugin-workbench
+dsh plugin --profile <profile> add github:lixian292/dsh-plugcraft
 ```
 
-**From npm** (once the scoped package is published):
+**From a release tarball** (no registry account needed): download the `.tgz` from the [latest release](https://github.com/lixian292/dsh-plugcraft/releases/latest) and install it:
 
 ```sh
-dsh plugin --profile <profile> add @lixian292/dsh-plugin-workbench
+dsh plugin --profile <profile> add <path-or-url-to>/dsh-plugcraft-0.10.0.tgz
 ```
 
 **From a local checkout** (development): in the DSH Plugins page, install the local bundle by absolute path, e.g. through the `plugin_manager` tool with `install_bundle`.
 
-After installing, open the sidebar and click **Plugin Workbench**. It sits next to *Plugins*, *Market* and *Context insights*.
+After installing, open the sidebar and click **Plugcraft** (Chinese UI: 插件工作台). It sits next to *Plugins*, *Market* and *Context insights*.
 
-> The package is published under the scoped name `@lixian292/dsh-plugin-workbench` because the unscoped name already belonged to an unrelated, discontinued plugin.
+> An npm package (`dsh-plugcraft`) is planned; npm registration was unavailable when the first release was cut, so GitHub and release tarballs are the supported channels for now.
 
 ## Quick start
 
-1. Open **Plugin Workbench** from the sidebar (the page can stay open while you chat).
+1. Open **Plugcraft** from the sidebar (the page can stay open while you chat).
 2. In any DSH conversation, describe the plugin you want, for example:
    > Build a plugin that adds a calendar panel to the DSH sidebar: month view, switch months, highlight today, and keep events locally.
 3. The agent loads the `plugin-workbench` skill and walks the pipeline: **start → clarify → search → decide**.

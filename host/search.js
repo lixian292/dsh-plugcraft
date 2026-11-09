@@ -204,7 +204,7 @@ export async function searchInstalled(pluginManager) {
     .filter((candidate) => candidate.name !== '')
     // Base/shipped bundles are infrastructure, not reusable feature plugins.
     .filter((candidate) => !candidate.name.startsWith('@deepseek-ai/'))
-    .filter((candidate) => candidate.name !== 'dsh-plugin-workbench')
+    .filter((candidate) => candidate.name !== 'dsh-plugcraft')
   return { candidates, total: candidates.length }
 }
 

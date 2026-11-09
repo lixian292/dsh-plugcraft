@@ -95,7 +95,7 @@ export function createMarketCatalog(logger) {
   async function refresh() {
     const signal = typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(FETCH_TIMEOUT_MS) : undefined
     const response = await fetch(MARKET_URL, {
-      headers: { 'user-agent': 'dsh-plugin-workbench', accept: 'application/json' },
+      headers: { 'user-agent': 'dsh-plugcraft', accept: 'application/json' },
       signal
     })
     if (!response.ok) throw new Error(`market catalog returned HTTP ${response.status}`)
