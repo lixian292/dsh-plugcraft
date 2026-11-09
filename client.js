@@ -363,12 +363,12 @@ window.__ModuleLoader__.load({
       .pc-task { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: transparent; border: 0; border-bottom: 1px solid var(--dsw-alias-border-l1); padding: 8px 11px; cursor: pointer; }
       .pc-task:last-child { border-bottom: 0; }
       .pc-task:hover { background: var(--dsw-alias-interactive-bg-hover); }
-      .pc-task.active { background: var(--dsw-alias-bg-layer-3); box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary), inset 0 0 0 1px var(--dsw-alias-border-l3); }
+      .pc-task.active { background: var(--dsw-alias-bg-layer-3); border-radius: 8px; outline: 1px solid var(--dsw-alias-brand-primary); outline-offset: -1px; box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary); }
       .pc-task-goal { font-size: 12.5px; line-height: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
       .pc-task-meta { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 10.5px; line-height: 15px; color: var(--dsw-alias-label-tertiary); }
 
       .pc-detail { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-      .pc-bubble { border: 1px solid var(--dsw-alias-brand-primary); border-radius: 12px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px 14px; box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+      .pc-bubble { position: relative; border: 2px solid var(--dsw-alias-brand-primary); border-radius: 14px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px 14px; outline: 1px solid var(--dsw-alias-brand-primary); outline-offset: 3px; box-shadow: 0 2px 6px rgba(0, 0, 0, .16); }
       .pc-bubble .pc-card { background: var(--dsw-alias-bg-base); border-color: var(--dsw-alias-border-l1); }
       .pc-hero { display: grid; grid-template-columns: minmax(0, 1fr) 168px; gap: 14px; padding: 2px 2px 12px; border-bottom: 1px dashed var(--dsw-alias-border-l2); }
       .pc-hero-left { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
@@ -392,14 +392,16 @@ window.__ModuleLoader__.load({
       .pc-tab .pc-tab-count { margin-left: 5px; font-size: 10.5px; color: var(--dsw-alias-label-tertiary); }
 
       .pc-pane { display: flex; flex-direction: column; gap: 10px; }
-      .pc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; align-items: start; }
+      .pc-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; align-items: stretch; }
       @media (max-width: 760px) { .pc-grid { grid-template-columns: minmax(0, 1fr); } }
-      .pc-card { border: 1px solid var(--dsw-alias-border-l2); border-radius: 10px; background: var(--dsw-alias-bg-layer-2); padding: 11px 13px; }
+      .pc-card { display: flex; flex-direction: column; border: 1px solid var(--dsw-alias-border-l2); border-radius: 10px; background: var(--dsw-alias-bg-layer-2); padding: 11px 13px; }
       .pc-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
       .pc-card-title { margin: 0; font-size: 12px; font-weight: 600; line-height: 17px; color: var(--dsw-alias-label-secondary); letter-spacing: .2px; display: flex; align-items: center; gap: 6px; }
       .pc-card-title::before { content: ''; width: 3px; height: 11px; border-radius: 2px; background: var(--dsw-alias-brand-primary); opacity: .8; }
       .pc-card-hint { font-size: 10.5px; line-height: 15px; color: var(--dsw-alias-label-tertiary); }
       .pc-kv { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 5px 10px; font-size: 12px; line-height: 18px; }
+      .pc-clamp { max-height: 168px; overflow: hidden; position: relative; }
+      .pc-clamp::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 26px; background: linear-gradient(transparent, var(--dsw-alias-bg-base)); }
       .pc-kv-key { color: var(--dsw-alias-label-tertiary); }
       .pc-kv-val { color: var(--dsw-alias-label-primary); overflow-wrap: anywhere; }
       .pc-note { margin: 0; font-size: 11.5px; line-height: 17px; color: var(--dsw-alias-label-tertiary); }
@@ -552,6 +554,7 @@ window.__ModuleLoader__.load({
 
     function SpecCard({ t, task }) {
       const spec = task.spec
+      const [showAll, setShowAll] = React.useState(false)
       const rows = []
       if (spec !== null && typeof spec === 'object') {
         if (spec.surface) rows.push([t('label.surface'), String(spec.surface)])
@@ -562,6 +565,7 @@ window.__ModuleLoader__.load({
         const constraints = stringList(spec.constraints)
         if (constraints.length > 0) rows.push([t('label.constraints'), constraints.join(' · ')])
       }
+      const long = rows.reduce((sum, [, value]) => sum + String(value).length, 0) > 260
       return h(
         Card,
         { title: t('label.spec') },
@@ -569,11 +573,22 @@ window.__ModuleLoader__.load({
           ? h('p', { className: 'pc-note' }, t('value.noSpec'))
           : h(
               'div',
-              { className: 'pc-kv' },
-              rows.flatMap(([key, value], index) => [
-                h('div', { className: 'pc-kv-key', key: 'k' + index }, key),
-                h('div', { className: 'pc-kv-val', key: 'v' + index }, value)
-              ])
+              {},
+              h(
+                'div',
+                { className: 'pc-kv' + (long && !showAll ? ' pc-clamp' : '') },
+                rows.flatMap(([key, value], index) => [
+                  h('div', { className: 'pc-kv-key', key: 'k' + index }, key),
+                  h('div', { className: 'pc-kv-val', key: 'v' + index }, value)
+                ])
+              ),
+              long
+                ? h(
+                    'button',
+                    { type: 'button', className: 'pc-btn ghost pc-more', style: { marginTop: '6px', alignSelf: 'flex-start' }, onClick: () => setShowAll(!showAll) },
+                    showAll ? t('action.showLess') : tf(t, 'action.showAll', { n: rows.length })
+                  )
+                : null
             )
       )
     }
@@ -621,7 +636,10 @@ window.__ModuleLoader__.load({
 
     function UnitsSummary({ t, task }) {
       const units = Array.isArray(task.units) ? task.units : []
+      const [showAll, setShowAll] = React.useState(false)
       const gaps = units.filter((unit) => unit !== null && typeof unit === 'object' && typeof unit.gap === 'string' && unit.gap !== '').length
+      const visible = showAll ? units : units.slice(0, 3)
+      React.useEffect(() => setShowAll(false), [task.id])
       return h(
         Card,
         { title: t('label.units'), hint: String(units.length) + ' · ' + t('label.gaps') + ' ' + String(gaps) },
@@ -630,7 +648,7 @@ window.__ModuleLoader__.load({
           : h(
               'div',
               {},
-              units.slice(0, 3).map((unit, index) =>
+              visible.map((unit, index) =>
                 h(
                   'div',
                   { className: 'pc-unit', key: unit.id || unit.name || index },
@@ -644,7 +662,13 @@ window.__ModuleLoader__.load({
                   unit.gap ? h('div', { className: 'pc-unit-body' }, h('div', { className: 'pc-unit-row' }, h('span', { className: 'pc-unit-key' }, t('label.gaps')), h('span', { className: 'pc-unit-val' }, String(unit.gap)))) : null
                 )
               ),
-              units.length > 3 ? h('p', { className: 'pc-note', style: { marginTop: '5px' } }, '+' + String(units.length - 3)) : null
+              units.length > 3
+                ? h(
+                    'button',
+                    { type: 'button', className: 'pc-btn ghost pc-more', style: { marginTop: '6px' }, onClick: () => setShowAll(!showAll) },
+                    showAll ? t('action.showLess') : tf(t, 'action.showAll', { n: units.length })
+                  )
+                : null
             )
       )
     }
