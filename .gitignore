@@ -1,0 +1,9 @@
+node_modules/
+*.tgz
+*.log
+.DS_Store
+dist/
+tmp/
+.idea/
+.env
+github-token.txt

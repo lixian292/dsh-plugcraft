@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Plugin Workbench",
+    "description": "Reuse first, fill the gaps second, build last: a reversible, token-efficient pipeline for authoring DeepSeek Harness plugins."
+  }
+}
