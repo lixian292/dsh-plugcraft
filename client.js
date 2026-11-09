@@ -355,20 +355,19 @@ window.__ModuleLoader__.load({
 
       .pc-layout { position: relative; display: grid; grid-template-columns: 262px minmax(0, 1fr); gap: 14px; align-items: start; }
       @media (max-width: 920px) { .pc-layout { grid-template-columns: minmax(0, 1fr); } }
-      .pc-link { position: absolute; z-index: 3; height: 2px; border-radius: 999px; background: var(--dsw-alias-brand-primary); pointer-events: none; transform-origin: left center; }
-      .pc-link::after { content: ''; position: absolute; right: -2px; top: -4px; width: 0; height: 0; border-left: 7px solid var(--dsw-alias-brand-primary); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-      .pc-side { position: sticky; top: 8px; border: 1px solid var(--dsw-alias-border-l2); border-radius: 10px; background: var(--dsw-alias-bg-layer-2); overflow: hidden; max-height: calc(100vh - 190px); display: flex; flex-direction: column; }
+      .pc-neck { position: absolute; z-index: 3; border-radius: 12px; background: var(--dsw-alias-bg-layer-2); pointer-events: none; }
+      .pc-side { position: sticky; top: 8px; border: 1px solid var(--dsw-alias-border-l2); border-radius: 12px; background: var(--dsw-alias-bg-base); overflow: hidden; max-height: calc(100vh - 190px); display: flex; flex-direction: column; }
       .pc-side-head { flex: none; padding: 8px 11px; display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; font-weight: 600; color: var(--dsw-alias-label-secondary); border-bottom: 1px solid var(--dsw-alias-border-l1); letter-spacing: .2px; }
       .pc-side-list { overflow-y: auto; flex: 1 1 auto; }
       .pc-task { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: transparent; border: 0; border-bottom: 1px solid var(--dsw-alias-border-l1); padding: 8px 11px; cursor: pointer; }
       .pc-task:last-child { border-bottom: 0; }
       .pc-task:hover { background: var(--dsw-alias-interactive-bg-hover); }
-      .pc-task.active { background: var(--dsw-alias-bg-layer-3); border-radius: 8px; outline: 1px solid var(--dsw-alias-brand-primary); outline-offset: -1px; box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary); }
+      .pc-task.active { background: var(--dsw-alias-bg-layer-2); border-radius: 12px; box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary); }
       .pc-task-goal { font-size: 12.5px; line-height: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
       .pc-task-meta { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 10.5px; line-height: 15px; color: var(--dsw-alias-label-tertiary); }
 
       .pc-detail { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-      .pc-bubble { position: relative; border: 2px solid var(--dsw-alias-brand-primary); border-radius: 14px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px 14px; outline: 1px solid var(--dsw-alias-brand-primary); outline-offset: 3px; box-shadow: 0 2px 6px rgba(0, 0, 0, .16); }
+      .pc-bubble { position: relative; z-index: 1; border: 1px solid var(--dsw-alias-border-l2); border-radius: 16px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px 14px; box-shadow: 0 6px 22px rgba(0, 0, 0, .18); }
       .pc-bubble .pc-card { background: var(--dsw-alias-bg-base); border-color: var(--dsw-alias-border-l1); }
       .pc-hero { display: grid; grid-template-columns: minmax(0, 1fr) 168px; gap: 14px; padding: 2px 2px 12px; border-bottom: 1px dashed var(--dsw-alias-border-l2); }
       .pc-hero-left { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
@@ -945,7 +944,7 @@ window.__ModuleLoader__.load({
       const layoutRef = React.useRef(null)
       const bubbleRef = React.useRef(null)
       const taskRefs = React.useRef(new Map())
-      const [link, setLink] = React.useState(null)
+      const [neck, setNeck] = React.useState(null)
 
       selectedRef.current = selectedId
 
@@ -954,22 +953,21 @@ window.__ModuleLoader__.load({
         const bubbleEl = bubbleRef.current
         const buttonEl = selectedId === null ? null : taskRefs.current.get(selectedId)
         if (!layoutEl || !bubbleEl || !buttonEl) {
-          setLink(null)
+          setNeck(null)
           return
         }
         const layoutRect = layoutEl.getBoundingClientRect()
         const bubbleRect = bubbleEl.getBoundingClientRect()
         const buttonRect = buttonEl.getBoundingClientRect()
-        const top = buttonRect.top - layoutRect.top + buttonRect.height / 2
-        const left = buttonRect.right - layoutRect.left
-        const width = bubbleRect.left - buttonRect.right + 2
-        const bubbleTop = bubbleRect.top - layoutRect.top
-        const bubbleBottom = bubbleTop + bubbleRect.height
-        if (width < 4 || top < bubbleTop || top > bubbleBottom) {
-          setLink(null)
+        const top = buttonRect.top - layoutRect.top + 5
+        const height = Math.max(24, buttonRect.height - 10)
+        const left = buttonRect.right - layoutRect.left - 3
+        const width = bubbleRect.left - buttonRect.right + 11
+        if (width < 6 || top + height < bubbleRect.top - layoutRect.top || top > bubbleRect.bottom - layoutRect.top) {
+          setNeck(null)
           return
         }
-        setLink({ top, left, width })
+        setNeck({ top, height, left, width })
       }, [selectedId, snapshot.tasks, detail.task, tab, expanded])
 
       React.useEffect(() => {
@@ -1169,8 +1167,8 @@ window.__ModuleLoader__.load({
                 )
               )
             ),
-            link !== null
-              ? h('div', { className: 'pc-link', style: { top: link.top + 'px', left: link.left + 'px', width: link.width + 'px' } })
+            neck !== null
+              ? h('div', { className: 'pc-neck', style: { top: neck.top + 'px', left: neck.left + 'px', width: neck.width + 'px', height: neck.height + 'px' } })
               : null,
             h(
               'div',
