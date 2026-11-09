@@ -1,8 +1,23 @@
 import assert from 'node:assert/strict'
+import { mkdtempSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { test } from 'node:test'
 
-import { fetchGithubJson, forgetGithubToken, resolveGithubToken } from '../host/github.js'
-import { buildQueries, extractKeywords, rankCandidates } from '../host/search.js'
+/**
+ * Isolate the token lookup before importing the host modules: they resolve the
+ * DSH home at import time, and a real user token on this machine must never
+ * leak into the anonymous-path tests.
+ */
+const tempHome = mkdtempSync(join(tmpdir(), 'dsh-workbench-search-'))
+process.env.DSH_HOME = tempHome
+
+const { fetchGithubJson, forgetGithubToken, resolveGithubToken } = await import('../host/github.js')
+const { buildQueries, extractKeywords, rankCandidates } = await import('../host/search.js')
+
+test.after(() => {
+  rmSync(tempHome, { recursive: true, force: true })
+})
 
 const TOKEN_ENV_NAMES = ['DSH_GITHUB_TOKEN', 'DSH_PLUGIN_WORKBENCH_GITHUB_TOKEN', 'GITHUB_TOKEN']
 
