@@ -2,4 +2,4 @@
 # User-level configuration belongs in the profile's cordis.patch.yml, not here.
 - insert:
     - id: plugin-workbench
-      name: dsh-plugin-workbench
+      name: '@lixian292/dsh-plugin-workbench'

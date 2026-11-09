@@ -2,6 +2,20 @@
 
 All notable changes to `dsh-plugin-workbench` are documented here.
 
+## [0.9.1] - 2026-11-09
+
+### Changed
+
+- npm package renamed to `@lixian292/dsh-plugin-workbench`: the unscoped `dsh-plugin-workbench` name belongs to an unrelated, discontinued plugin. The GitHub repository keeps its name.
+- README rewritten for onboarding: separate English (`README.md`) and Chinese (`README.zh.md`) files, quick start, pipeline overview, configuration and development sections; development history moved to this changelog.
+- GitHub Actions CI enabled at `.github/workflows/ci.yml` (token now has the `workflow` scope).
+
+### Added
+
+- `assets/screenshots/workbench.png` and `screenshots.json` (marketplace screenshots).
+- `assets/icon-180.png` and a marketplace `icon:` entry (raster icon, as the registry requires).
+- `prepublishOnly` check for npm releases.
+
 ## [0.9.0] - 2026-11-09
 
 First public release candidate.

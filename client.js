@@ -1,12 +1,12 @@
 window.__ModuleLoader__.load({
-  id: 'dsh-plugin-workbench',
+  id: '@lixian292/dsh-plugin-workbench',
   factory(require) {
     const React = require('react')
     const h = React.createElement
 
     const NS = 'dsh-plugin-workbench'
     const PANEL_ID = 'plugin-workbench'
-    const VERSION = '0.9.0'
+    const VERSION = '0.9.1'
     const BUILD = '2026-11-09'
     const API_PATH = '/workbench/api'
     const POLL_MS = 4000
