@@ -110,7 +110,7 @@ export function registerWorkbenchRoute(ctx, store) {
     switch (method) {
       case 'snapshot':
         return {
-          version: '0.11.1',
+          version: '0.12.0',
           tasks: store.listTasks().slice(0, 30).map(compactTask),
           dataDir: store.dir
         }

@@ -6,7 +6,7 @@ window.__ModuleLoader__.load({
 
     const NS = 'dsh-plugcraft'
     const PANEL_ID = 'plugin-workbench'
-    const VERSION = '0.11.1'
+    const VERSION = '0.12.0'
     const API_PATH = '/workbench/api'
     const POLL_MS = 4000
 
@@ -340,30 +340,39 @@ window.__ModuleLoader__.load({
       .pc-btn.danger { color: var(--dsw-alias-state-error-primary, #d33); }
       .pc-icon-btn { padding: 5px 7px; }
 
-      .pc-progress { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; padding: 3px 4px; border-radius: 9px; background: var(--dsw-alias-bg-layer-2); border: 1px solid var(--dsw-alias-border-l1); }
-      .pc-progress-step { flex: 1 1 0; display: flex; align-items: center; gap: 7px; min-width: 0; padding: 5px 8px; border-radius: 6px; color: var(--dsw-alias-label-tertiary); font-size: 11.5px; line-height: 16px; white-space: nowrap; }
-      .pc-progress-step .pc-progress-dot { flex: none; width: 18px; height: 18px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-tertiary); }
-      .pc-progress-step.done { color: var(--dsw-alias-label-secondary); }
-      .pc-progress-step.done .pc-progress-dot { background: var(--dsw-alias-brand-primary); color: var(--dsw-alias-label-primary-foreground, #fff); }
-      .pc-progress-step.active { background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-primary); }
-      .pc-progress-step.active .pc-progress-dot { background: var(--dsw-alias-brand-primary); color: var(--dsw-alias-label-primary-foreground, #fff); box-shadow: 0 0 0 3px var(--dsw-alias-bg-base); }
-      .pc-progress-step span.pc-progress-label { overflow: hidden; text-overflow: ellipsis; }
-      @media (max-width: 760px) { .pc-progress-step span.pc-progress-label { display: none; } .pc-progress-step { justify-content: center; } }
+      .pc-stepper { position: relative; display: flex; flex-direction: column; gap: 0; padding: 2px 0; }
+      .pc-stepper-track { position: absolute; left: 12px; top: 10px; bottom: 10px; width: 2px; border-radius: 999px; background: var(--dsw-alias-border-l2); overflow: hidden; }
+      .pc-stepper-fill { position: absolute; left: 0; top: 0; width: 100%; height: var(--pc-stage-fill, 0%); border-radius: 999px; background: var(--dsw-alias-brand-primary); transition: height .55s cubic-bezier(.4, 0, .2, 1); }
+      .pc-step { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; min-height: 25px; padding: 1px 0; font-size: 11px; line-height: 16px; color: var(--dsw-alias-label-tertiary); }
+      .pc-step-dot { position: relative; flex: none; width: 20px; height: 20px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 9.5px; font-weight: 600; background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-tertiary); transition: background .35s ease, color .35s ease, box-shadow .35s ease; }
+      .pc-step.done { color: var(--dsw-alias-label-secondary); }
+      .pc-step.done .pc-step-dot { background: var(--dsw-alias-brand-primary); color: var(--dsw-alias-label-primary-foreground, #fff); }
+      .pc-step.active { color: var(--dsw-alias-label-primary); font-weight: 600; }
+      .pc-step.active .pc-step-dot { background: var(--dsw-alias-brand-primary); color: var(--dsw-alias-label-primary-foreground, #fff); box-shadow: 0 0 0 3px var(--dsw-alias-bg-layer-2); }
+      .pc-step.active .pc-step-dot::after { content: ''; position: absolute; inset: -5px; border-radius: 999px; border: 2px solid var(--dsw-alias-brand-primary); opacity: .32; animation: pc-pulse 1.7s ease-in-out infinite; }
+      .pc-step-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      @media (max-width: 760px) { .pc-hero { grid-template-columns: minmax(0, 1fr); } .pc-hero-progress { display: none; } }
 
-      .pc-layout { display: grid; grid-template-columns: 262px minmax(0, 1fr); gap: 12px; align-items: start; }
+      .pc-layout { position: relative; display: grid; grid-template-columns: 262px minmax(0, 1fr); gap: 14px; align-items: start; }
       @media (max-width: 920px) { .pc-layout { grid-template-columns: minmax(0, 1fr); } }
+      .pc-link { position: absolute; z-index: 3; height: 2px; border-radius: 999px; background: var(--dsw-alias-brand-primary); pointer-events: none; transform-origin: left center; }
+      .pc-link::after { content: ''; position: absolute; right: -2px; top: -4px; width: 0; height: 0; border-left: 7px solid var(--dsw-alias-brand-primary); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
       .pc-side { position: sticky; top: 8px; border: 1px solid var(--dsw-alias-border-l2); border-radius: 10px; background: var(--dsw-alias-bg-layer-2); overflow: hidden; max-height: calc(100vh - 190px); display: flex; flex-direction: column; }
       .pc-side-head { flex: none; padding: 8px 11px; display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; font-weight: 600; color: var(--dsw-alias-label-secondary); border-bottom: 1px solid var(--dsw-alias-border-l1); letter-spacing: .2px; }
       .pc-side-list { overflow-y: auto; flex: 1 1 auto; }
       .pc-task { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: transparent; border: 0; border-bottom: 1px solid var(--dsw-alias-border-l1); padding: 8px 11px; cursor: pointer; }
       .pc-task:last-child { border-bottom: 0; }
       .pc-task:hover { background: var(--dsw-alias-interactive-bg-hover); }
-      .pc-task.active { background: var(--dsw-alias-bg-layer-3); box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary); }
+      .pc-task.active { background: var(--dsw-alias-bg-layer-3); box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary), inset 0 0 0 1px var(--dsw-alias-border-l3); }
       .pc-task-goal { font-size: 12.5px; line-height: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
       .pc-task-meta { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 10.5px; line-height: 15px; color: var(--dsw-alias-label-tertiary); }
 
-      .pc-detail { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-      .pc-hero { border: 1px solid var(--dsw-alias-border-l2); border-radius: 10px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+      .pc-detail { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+      .pc-bubble { border: 1px solid var(--dsw-alias-brand-primary); border-radius: 12px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px 14px; box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+      .pc-bubble .pc-card { background: var(--dsw-alias-bg-base); border-color: var(--dsw-alias-border-l1); }
+      .pc-hero { display: grid; grid-template-columns: minmax(0, 1fr) 168px; gap: 14px; padding: 2px 2px 12px; border-bottom: 1px dashed var(--dsw-alias-border-l2); }
+      .pc-hero-left { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+      .pc-hero-progress { border-left: 1px solid var(--dsw-alias-border-l1); padding-left: 12px; }
       .pc-goal { margin: 0; font-size: 15px; line-height: 22px; font-weight: 600; letter-spacing: .1px; overflow-wrap: anywhere; }
       .pc-chip-row { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
       .pc-chip { display: inline-flex; align-items: center; gap: 4px; padding: 0 7px; border-radius: 999px; background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-secondary); font-size: 10.5px; line-height: 17px; white-space: nowrap; }
@@ -376,7 +385,7 @@ window.__ModuleLoader__.load({
       .pc-chip.tone-muted { color: var(--dsw-alias-label-tertiary); }
       .pc-hero-actions { display: flex; justify-content: flex-end; gap: 6px; }
 
-      .pc-tabs { display: flex; align-items: center; gap: 2px; border-bottom: 1px solid var(--dsw-alias-border-l2); padding: 0 2px; }
+      .pc-tabs { display: flex; align-items: center; gap: 2px; border-bottom: 1px solid var(--dsw-alias-border-l2); padding: 0 2px; margin-top: 2px; }
       .pc-tab { font: inherit; font-size: 12.5px; line-height: 18px; color: var(--dsw-alias-label-tertiary); background: transparent; border: 0; padding: 7px 10px 8px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
       .pc-tab:hover { color: var(--dsw-alias-label-primary); }
       .pc-tab.active { color: var(--dsw-alias-label-primary); border-bottom-color: var(--dsw-alias-brand-primary); font-weight: 600; }
@@ -498,13 +507,15 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function StageProgress({ t, stage }) {
+    function VerticalProgress({ t, stage }) {
       if (stage === undefined || stage === null) return null
       const active = STAGE_INDEX[stage] === undefined ? -1 : STAGE_INDEX[stage]
       const cancelled = stage === 'cancelled'
+      const fill = cancelled || active < 0 ? 0 : (active / (STEPS.length - 1)) * 100
       return h(
         'div',
-        { className: 'pc-progress', role: 'list', 'aria-label': t('label.stage') },
+        { className: 'pc-stepper', style: { '--pc-stage-fill': fill + '%' }, role: 'list', 'aria-label': t('label.stage') },
+        h('div', { className: 'pc-stepper-track' }, h('div', { className: 'pc-stepper-fill' })),
         STEPS.map((step, index) => {
           const done = !cancelled && active >= 0 && index < active
           const isActive = !cancelled && active >= 0 && index === active
@@ -513,11 +524,11 @@ window.__ModuleLoader__.load({
             {
               key: step,
               role: 'listitem',
-              className: 'pc-progress-step' + (done ? ' done' : '') + (isActive ? ' active' : ''),
+              className: 'pc-step' + (done ? ' done' : '') + (isActive ? ' active' : ''),
               title: t('steps.' + step)
             },
-            h('span', { className: 'pc-progress-dot' }, done ? h(CheckIcon) : String(index + 1)),
-            h('span', { className: 'pc-progress-label' }, t('steps.' + step))
+            h('span', { className: 'pc-step-dot' }, done ? h(CheckIcon) : String(index + 1)),
+            h('span', { className: 'pc-step-label' }, t('steps.' + step))
           )
         })
       )
@@ -791,7 +802,7 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function Detail({ t, task, busy, tab, setTab, expanded, setExpanded, onCancel, onRemove }) {
+    function Detail({ t, task, busy, tab, setTab, expanded, setExpanded, onCancel, onRemove, bubbleRef }) {
       const cancelled = task.stage === 'cancelled'
       const candidates = Array.isArray(task.candidates) ? task.candidates : []
       const gaps = Array.isArray(task.units) ? task.units.filter((unit) => unit !== null && typeof unit === 'object' && typeof unit.gap === 'string' && unit.gap !== '').length : 0
@@ -802,26 +813,31 @@ window.__ModuleLoader__.load({
       ]
       return h(
         'div',
-        { className: 'pc-detail' },
+        { className: 'pc-detail pc-bubble', ref: bubbleRef },
         h(
           'section',
           { className: 'pc-hero' },
-          h('p', { className: 'pc-goal' }, String(task.goal || '')),
           h(
             'div',
-            { className: 'pc-chip-row' },
-            h('span', { className: 'pc-chip tone-' + (STAGE_TONE[task.stage] || 'muted') }, stageLabel(t, task.stage)),
-            h('span', { className: 'pc-chip' }, t('label.candidates') + ' ' + String(candidates.length)),
-            h('span', { className: 'pc-chip' }, t('label.gaps') + ' ' + String(gaps)),
-            h('span', { className: 'pc-chip' }, t('label.updated') + ' ' + timeAgo(t, task.updatedAt)),
-            h('span', { className: 'pc-chip mono' }, String(task.id || ''))
+            { className: 'pc-hero-left' },
+            h('p', { className: 'pc-goal' }, String(task.goal || '')),
+            h(
+              'div',
+              { className: 'pc-chip-row' },
+              h('span', { className: 'pc-chip tone-' + (STAGE_TONE[task.stage] || 'muted') }, stageLabel(t, task.stage)),
+              h('span', { className: 'pc-chip' }, t('label.candidates') + ' ' + String(candidates.length)),
+              h('span', { className: 'pc-chip' }, t('label.gaps') + ' ' + String(gaps)),
+              h('span', { className: 'pc-chip' }, t('label.updated') + ' ' + timeAgo(t, task.updatedAt)),
+              h('span', { className: 'pc-chip mono' }, String(task.id || ''))
+            ),
+            h(
+              'div',
+              { className: 'pc-hero-actions' },
+              cancelled ? null : h('button', { type: 'button', className: 'pc-btn ghost', disabled: busy, onClick: onCancel }, t('action.cancel')),
+              h('button', { type: 'button', className: 'pc-btn ghost danger', disabled: busy, onClick: onRemove }, t('action.remove'))
+            )
           ),
-          h(
-            'div',
-            { className: 'pc-hero-actions' },
-            cancelled ? null : h('button', { type: 'button', className: 'pc-btn ghost', disabled: busy, onClick: onCancel }, t('action.cancel')),
-            h('button', { type: 'button', className: 'pc-btn ghost danger', disabled: busy, onClick: onRemove }, t('action.remove'))
-          )
+          h('div', { className: 'pc-hero-progress' }, h(VerticalProgress, { t, stage: task.stage }))
         ),
         h(
           'div',
@@ -902,8 +918,35 @@ window.__ModuleLoader__.load({
       const mounted = React.useRef(true)
       const selectedRef = React.useRef(null)
       const inflight = React.useRef(false)
+      const layoutRef = React.useRef(null)
+      const bubbleRef = React.useRef(null)
+      const taskRefs = React.useRef(new Map())
+      const [link, setLink] = React.useState(null)
 
       selectedRef.current = selectedId
+
+      React.useLayoutEffect(() => {
+        const layoutEl = layoutRef.current
+        const bubbleEl = bubbleRef.current
+        const buttonEl = selectedId === null ? null : taskRefs.current.get(selectedId)
+        if (!layoutEl || !bubbleEl || !buttonEl) {
+          setLink(null)
+          return
+        }
+        const layoutRect = layoutEl.getBoundingClientRect()
+        const bubbleRect = bubbleEl.getBoundingClientRect()
+        const buttonRect = buttonEl.getBoundingClientRect()
+        const top = buttonRect.top - layoutRect.top + buttonRect.height / 2
+        const left = buttonRect.right - layoutRect.left
+        const width = bubbleRect.left - buttonRect.right + 2
+        const bubbleTop = bubbleRect.top - layoutRect.top
+        const bubbleBottom = bubbleTop + bubbleRect.height
+        if (width < 4 || top < bubbleTop || top > bubbleBottom) {
+          setLink(null)
+          return
+        }
+        setLink({ top, left, width })
+      }, [selectedId, snapshot.tasks, detail.task, tab, expanded])
 
       React.useEffect(() => {
         mounted.current = true
@@ -1067,10 +1110,9 @@ window.__ModuleLoader__.load({
         body = h(
           'div',
           {},
-          h(StageProgress, { t, stage: stageTask ? stageTask.stage : null }),
           h(
             'div',
-            { className: 'pc-layout' },
+            { className: 'pc-layout', ref: layoutRef },
             h(
               'aside',
               { className: 'pc-side' },
@@ -1081,7 +1123,16 @@ window.__ModuleLoader__.load({
                 snapshot.tasks.map((item) =>
                   h(
                     'button',
-                    { type: 'button', key: item.id, className: 'pc-task' + (item.id === selectedId ? ' active' : ''), onClick: () => selectTask(item.id) },
+                    {
+                      type: 'button',
+                      key: item.id,
+                      ref: (el) => {
+                        if (el) taskRefs.current.set(item.id, el)
+                        else taskRefs.current.delete(item.id)
+                      },
+                      className: 'pc-task' + (item.id === selectedId ? ' active' : ''),
+                      onClick: () => selectTask(item.id)
+                    },
                     h('div', { className: 'pc-task-goal' }, String(item.goal || '')),
                     h(
                       'div',
@@ -1094,6 +1145,9 @@ window.__ModuleLoader__.load({
                 )
               )
             ),
+            link !== null
+              ? h('div', { className: 'pc-link', style: { top: link.top + 'px', left: link.left + 'px', width: link.width + 'px' } })
+              : null,
             h(
               'div',
               { className: 'pc-detail' },
@@ -1108,7 +1162,7 @@ window.__ModuleLoader__.load({
                   ? detail.loading
                     ? h(Skeleton)
                     : h('div', { className: 'pc-empty-detail' }, t('page.selectTask'))
-                  : h(Detail, { t, task, busy, tab, setTab, expanded, setExpanded, onCancel: cancelTask, onRemove: removeTask })
+                  : h(Detail, { t, task, busy, tab, setTab, expanded, setExpanded, onCancel: cancelTask, onRemove: removeTask, bubbleRef })
             )
           )
         )

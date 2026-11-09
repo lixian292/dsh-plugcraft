@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugcraft",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "Plugcraft (dsh-plugcraft): a reuse-first plugin authoring workbench for DeepSeek Harness (DSH). Clarify the need, search installed plugins / market / GitHub for reusable implementations, decide, decompose the gaps, verify, then build.",
   "author": "lixian292",
   "homepage": "https://github.com/lixian292/dsh-plugcraft",
