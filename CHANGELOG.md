@@ -10,6 +10,7 @@ All notable changes to `dsh-plugin-workbench` are documented here.
 - **Five-stage progress integrated into the expanded card header** as a compact vertical stepper (clarify → search → decide → decompose → build). The fill animates smoothly to the active node, completed nodes show checks, and the active node has a subtle pulse.
 - Task header shows goal, stage, candidate count, gap count, update time and task id; actions sit on the tab bar row so the detail body starts immediately.
 - Cards in the overview grid stretch to equal row heights, and overflowing units/spec text collapses behind “show all / collapse” buttons.
+- Screenshots refreshed for the accordion layout (workspace history blurred), normalized to 1920px JPEG for README and marketplace size limits.
 
 ## [0.11.1] - 2026-11-10
 

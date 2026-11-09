@@ -12,11 +12,11 @@ Instead of letting the agent start writing plugin code immediately, the workbenc
 
 ## Screenshots
 
-<img src="assets/screenshots/overview.png" alt="Plugcraft task overview: compact header, five-step progress strip and three tabs; the Overview tab shows spec, search report, decision and capability units" width="100%">
+<img src="assets/screenshots/overview.jpg" alt="Plugcraft task cards: the expanded card shows the goal, five-step progress and tabs; the Overview tab shows spec, search report, decision and capability units" width="100%">
 
 | Candidates | Plan & handoff | The plugin it produced |
 |---|---|---|
-| ![Candidate list from installed plugins, the market and GitHub](assets/screenshots/candidates.png) | ![Structural verification and install result](assets/screenshots/plan.png) | ![Calendar plugin produced by the pipeline](assets/screenshots/result.png) |
+| ![Candidate list from installed plugins, the market and GitHub](assets/screenshots/candidates.jpg) | ![Structural verification and install result](assets/screenshots/plan.jpg) | ![Calendar plugin produced by the pipeline](assets/screenshots/result.jpg) |
 
 The screenshots follow one task end to end: a calendar-plugin request, eight reusable candidates found across the market and GitHub, the decomposition into capability units, the verification checks, and the installed calendar plugin.
 

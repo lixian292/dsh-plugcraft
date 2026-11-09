@@ -12,11 +12,11 @@
 
 ## 截图
 
-<img src="assets/screenshots/overview.png" alt="插件工作台任务概览：紧凑头部、五步进度条与三个 Tab，概览页展示需求规格、检索报告、用户决策与能力单元" width="100%">
+<img src="assets/screenshots/overview.jpg" alt="插件工作台任务卡片：展开的卡片头部包含目标与五步进度，概览页展示需求规格、检索报告、用户决策与能力单元" width="100%">
 
 | 候选实现 | 计划与交接 | 最终产出的插件 |
 |---|---|---|
-| ![来自已装插件、市场与 GitHub 的候选列表](assets/screenshots/candidates.png) | ![结构校验与安装结果](assets/screenshots/plan.png) | ![流水线产出的日历插件](assets/screenshots/result.png) |
+| ![来自已装插件、市场与 GitHub 的候选列表](assets/screenshots/candidates.jpg) | ![结构校验与安装结果](assets/screenshots/plan.jpg) | ![流水线产出的日历插件](assets/screenshots/result.jpg) |
 
 四张截图来自同一条任务：一个日历插件需求，在市场与 GitHub 中检索到 8 个可复用候选，解构为能力单元，经过结构校验后安装出来的日历插件。
 
