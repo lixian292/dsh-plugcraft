@@ -22,9 +22,9 @@ The screenshots follow one task end to end: a calendar-plugin request, eight reu
 
 ## What the page gives you
 
-- **A task list** on the left — one row per plugin need, with its stage and candidate count.
-- **A compact five-step strip** above the detail: clarify → search → decide → decompose → build.
-- **Three tabs** for the selected task:
+- **Task cards in one vertical list** — each plugin need is a card showing goal, stage, candidate count and last update. Click a card to expand its full detail in place; click again to collapse it. Only one task is open at a time, so the page stays short.
+- **A five-step progress stepper** in the expanded card header: clarify → search → decide → decompose → build, with a smooth fill to the current node.
+- **Three tabs** inside the expanded card:
   - **Overview** — spec, search report, decision, capability-unit summary and handoff summary in one screen.
   - **Candidates** — reusable implementations found across installed plugins, the market catalog and GitHub; five rows by default with a “show all” toggle.
   - **Plan & handoff** — install spec, Creator sub-agent status, structural verification checks and the final install result.
@@ -49,7 +49,7 @@ Most "make me a plugin" requests end up recreating something that already exists
 - **Hand off** gaps to a Creator sub-agent (the `cordis` preset) in its own context.
 - **Verify** the generated bundle structurally — manifest, patch, client entry, locale, icon and JavaScript syntax — without executing it.
 - **Record** the install result, so the task ends with a clear `done` / `install_failed` state.
-- **Workbench page** in the sidebar: task list, five-stage rail, spec, candidates, search report, decision, units, handoff and verification cards.
+- **Workbench page** in the sidebar: expandable task cards, in-card five-step progress, spec, candidates, search report, decision, units, handoff and verification cards.
 
 ## Install
 

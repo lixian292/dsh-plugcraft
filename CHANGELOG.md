@@ -6,10 +6,10 @@ All notable changes to `dsh-plugin-workbench` are documented here.
 
 ### Changed
 
-- **Task detail is now a single “bubble”** connected to the selected task row: selecting a task grows a soft, blended boundary around all of its information panels. A rounded neck shape joins the task card and the detail bubble into one irregular rounded silhouette (no connector line), and borders/shadows are intentionally soft instead of hard outlines.
-- **Five-stage progress moved into the task info card** as a vertical stepper (clarify → search → decide → decompose → build). The fill animates smoothly to the active node, completed nodes show checks, and the active node has a subtle pulse.
-- Removed the standalone full-width progress strip, reclaiming vertical space; the bubble/tab layout keeps the page short.
-- Task list active row has a stronger brand edge so the selected task and its bubble read as one unit.
+- **Workbench page rebuilt around expandable task cards** instead of a side list plus detail pane. Each task is a card; clicking it expands the full detail in place and clicking again collapses it, so the selected task and its information are literally one card. This removes the fragile connector/neck visuals entirely.
+- **Five-stage progress integrated into the expanded card header** as a compact vertical stepper (clarify → search → decide → decompose → build). The fill animates smoothly to the active node, completed nodes show checks, and the active node has a subtle pulse.
+- Task header shows goal, stage, candidate count, gap count, update time and task id; actions sit on the tab bar row so the detail body starts immediately.
+- Cards in the overview grid stretch to equal row heights, and overflowing units/spec text collapses behind “show all / collapse” buttons.
 
 ## [0.11.1] - 2026-11-10
 

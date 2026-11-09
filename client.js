@@ -341,38 +341,38 @@ window.__ModuleLoader__.load({
       .pc-icon-btn { padding: 5px 7px; }
 
       .pc-stepper { position: relative; display: flex; flex-direction: column; gap: 0; padding: 2px 0; }
-      .pc-stepper-track { position: absolute; left: 12px; top: 10px; bottom: 10px; width: 2px; border-radius: 999px; background: var(--dsw-alias-border-l2); overflow: hidden; }
+      .pc-stepper-track { position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; border-radius: 999px; background: var(--dsw-alias-border-l2); overflow: hidden; }
       .pc-stepper-fill { position: absolute; left: 0; top: 0; width: 100%; height: var(--pc-stage-fill, 0%); border-radius: 999px; background: var(--dsw-alias-brand-primary); transition: height .55s cubic-bezier(.4, 0, .2, 1); }
-      .pc-step { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; min-height: 25px; padding: 1px 0; font-size: 11px; line-height: 16px; color: var(--dsw-alias-label-tertiary); }
-      .pc-step-dot { position: relative; flex: none; width: 20px; height: 20px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 9.5px; font-weight: 600; background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-tertiary); transition: background .35s ease, color .35s ease, box-shadow .35s ease; }
+      .pc-step { position: relative; z-index: 1; display: flex; align-items: center; gap: 7px; min-height: 20px; padding: 0; font-size: 10.5px; line-height: 15px; color: var(--dsw-alias-label-tertiary); }
+      .pc-step-dot { position: relative; flex: none; width: 17px; height: 17px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-tertiary); transition: background .35s ease, color .35s ease, box-shadow .35s ease; }
       .pc-step.done { color: var(--dsw-alias-label-secondary); }
       .pc-step.done .pc-step-dot { background: var(--dsw-alias-brand-primary); color: var(--dsw-alias-label-primary-foreground, #fff); }
       .pc-step.active { color: var(--dsw-alias-label-primary); font-weight: 600; }
       .pc-step.active .pc-step-dot { background: var(--dsw-alias-brand-primary); color: var(--dsw-alias-label-primary-foreground, #fff); box-shadow: 0 0 0 3px var(--dsw-alias-bg-layer-2); }
       .pc-step.active .pc-step-dot::after { content: ''; position: absolute; inset: -5px; border-radius: 999px; border: 2px solid var(--dsw-alias-brand-primary); opacity: .32; animation: pc-pulse 1.7s ease-in-out infinite; }
       .pc-step-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-      @media (max-width: 760px) { .pc-hero { grid-template-columns: minmax(0, 1fr); } .pc-hero-progress { display: none; } }
-
-      .pc-layout { position: relative; display: grid; grid-template-columns: 262px minmax(0, 1fr); gap: 14px; align-items: start; }
-      @media (max-width: 920px) { .pc-layout { grid-template-columns: minmax(0, 1fr); } }
-      .pc-neck-svg { position: absolute; inset: 0; z-index: 3; pointer-events: none; overflow: visible; }
-      .pc-side { position: sticky; top: 8px; border: 1px solid var(--dsw-alias-border-l2); border-radius: 12px; background: var(--dsw-alias-bg-base); overflow: hidden; max-height: calc(100vh - 190px); display: flex; flex-direction: column; }
-      .pc-side-head { flex: none; padding: 8px 11px; display: flex; align-items: center; justify-content: space-between; font-size: 11.5px; font-weight: 600; color: var(--dsw-alias-label-secondary); border-bottom: 1px solid var(--dsw-alias-border-l1); letter-spacing: .2px; }
-      .pc-side-list { overflow-y: auto; flex: 1 1 auto; }
-      .pc-task { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: transparent; border: 0; border-bottom: 1px solid var(--dsw-alias-border-l1); padding: 8px 11px; cursor: pointer; }
-      .pc-task:last-child { border-bottom: 0; }
-      .pc-task:hover { background: var(--dsw-alias-interactive-bg-hover); }
-      .pc-task.active { background: var(--dsw-alias-bg-layer-2); border-radius: 14px 2px 2px 14px; box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary); }
-      .pc-task-goal { font-size: 12.5px; line-height: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .pc-task-meta { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 10.5px; line-height: 15px; color: var(--dsw-alias-label-tertiary); }
-
-      .pc-detail { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-      .pc-bubble { position: relative; z-index: 1; border: 1px solid var(--dsw-alias-border-l2); border-radius: 16px; background: var(--dsw-alias-bg-layer-2); padding: 12px 14px 14px; box-shadow: 0 6px 22px rgba(0, 0, 0, .18); }
-      .pc-bubble .pc-card { background: var(--dsw-alias-bg-base); border-color: var(--dsw-alias-border-l1); }
-      .pc-hero { display: grid; grid-template-columns: minmax(0, 1fr) 168px; gap: 14px; padding: 2px 2px 12px; border-bottom: 1px dashed var(--dsw-alias-border-l2); }
-      .pc-hero-left { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-      .pc-hero-progress { border-left: 1px solid var(--dsw-alias-border-l1); padding-left: 12px; }
-      .pc-goal { margin: 0; font-size: 15px; line-height: 22px; font-weight: 600; letter-spacing: .1px; overflow-wrap: anywhere; }
+      .pc-tasks { display: flex; flex-direction: column; gap: 10px; }
+      .pc-list-head { display: flex; align-items: center; gap: 8px; margin: 0 2px 8px; font-size: 12px; font-weight: 600; color: var(--dsw-alias-label-secondary); letter-spacing: .2px; }
+      .pc-task-card { border: 1px solid var(--dsw-alias-border-l1); border-radius: 14px; background: var(--dsw-alias-bg-layer-2); overflow: hidden; transition: border-color .18s ease, box-shadow .18s ease; }
+      .pc-task-card:hover { border-color: var(--dsw-alias-border-l2); }
+      .pc-task-card.open { border-color: var(--dsw-alias-border-l2); box-shadow: 0 10px 28px rgba(0, 0, 0, .20); }
+      .pc-task-head { display: grid; grid-template-columns: minmax(0, 1fr) 136px auto; gap: 10px; align-items: start; padding: 12px 14px; cursor: pointer; user-select: none; }
+      .pc-task-card:not(.open) .pc-task-head { grid-template-columns: minmax(0, 1fr) auto; }
+      .pc-task-head-main { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+      .pc-task-title { font-size: 13.5px; line-height: 20px; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+      .pc-task-card.open .pc-task-title { -webkit-line-clamp: 4; }
+      .pc-task-meta { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 10.5px; line-height: 16px; color: var(--dsw-alias-label-tertiary); }
+      .pc-task-progress { border-left: 1px solid var(--dsw-alias-border-l1); padding-left: 12px; }
+      .pc-task-chevron { align-self: center; flex: none; color: var(--dsw-alias-label-tertiary); transition: transform .18s ease; }
+      .pc-task-card.open .pc-task-chevron { transform: rotate(180deg); }
+      .pc-task-body { border-top: 1px solid var(--dsw-alias-border-l1); padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+      .pc-task-body .pc-card { background: var(--dsw-alias-bg-base); border-color: var(--dsw-alias-border-l1); }
+      .pc-task-actions { display: flex; justify-content: flex-end; gap: 6px; margin-top: -2px; }
+      @media (max-width: 760px) {
+        .pc-task-head { grid-template-columns: minmax(0, 1fr) auto; }
+        .pc-task-progress { display: none; }
+      }
+      .pc-detail { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
       .pc-chip-row { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
       .pc-chip { display: inline-flex; align-items: center; gap: 4px; padding: 0 7px; border-radius: 999px; background: var(--dsw-alias-bg-layer-3); color: var(--dsw-alias-label-secondary); font-size: 10.5px; line-height: 17px; white-space: nowrap; }
       .pc-chip.mono { font-family: var(--dsw-font-family-mono, ui-monospace, Menlo, monospace); font-size: 10px; }
@@ -384,7 +384,10 @@ window.__ModuleLoader__.load({
       .pc-chip.tone-muted { color: var(--dsw-alias-label-tertiary); }
       .pc-hero-actions { display: flex; justify-content: flex-end; gap: 6px; }
 
-      .pc-tabs { display: flex; align-items: center; gap: 2px; border-bottom: 1px solid var(--dsw-alias-border-l2); padding: 0 2px; margin-top: 2px; }
+      .pc-tabs { display: flex; align-items: center; gap: 2px; padding: 0 2px; margin-top: 0; }
+      .pc-tabs-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--dsw-alias-border-l2); }
+      .pc-task-actions { display: flex; justify-content: flex-end; gap: 6px; margin: 0; flex: none; }
+      .pc-task-actions .pc-btn { font-size: 11.5px; padding: 3px 8px; }
       .pc-tab { font: inherit; font-size: 12.5px; line-height: 18px; color: var(--dsw-alias-label-tertiary); background: transparent; border: 0; padding: 7px 10px 8px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
       .pc-tab:hover { color: var(--dsw-alias-label-primary); }
       .pc-tab.active { color: var(--dsw-alias-label-primary); border-bottom-color: var(--dsw-alias-brand-primary); font-weight: 600; }
@@ -825,79 +828,121 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function Detail({ t, task, busy, tab, setTab, expanded, setExpanded, onCancel, onRemove, bubbleRef }) {
-      const cancelled = task.stage === 'cancelled'
-      const candidates = Array.isArray(task.candidates) ? task.candidates : []
-      const gaps = Array.isArray(task.units) ? task.units.filter((unit) => unit !== null && typeof unit === 'object' && typeof unit.gap === 'string' && unit.gap !== '').length : 0
+    function TaskCard({ t, item, task, open, loading, error, busy, tab, setTab, expanded, setExpanded, onToggle, onCancel, onRemove, onRetry }) {
+      const base = task !== null && task !== undefined ? task : item
+      const cancelled = base.stage === 'cancelled'
+      const candidateCount = task !== null && task !== undefined && Array.isArray(task.candidates) ? task.candidates.length : Number(item.candidates || 0)
+      const gaps = task !== null && task !== undefined && Array.isArray(task.units) ? task.units.filter((unit) => unit !== null && typeof unit === 'object' && typeof unit.gap === 'string' && unit.gap !== '').length : Number(item.gaps || 0)
       const tabs = [
         { id: 'overview', label: t('tabs.overview'), count: null },
-        { id: 'candidates', label: t('tabs.candidates'), count: candidates.length },
+        { id: 'candidates', label: t('tabs.candidates'), count: candidateCount },
         { id: 'plan', label: t('tabs.plan'), count: null }
       ]
+      const chevron = h(
+        'svg',
+        { className: 'pc-task-chevron', width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true },
+        h('path', { d: 'm6 9 6 6 6-6' })
+      )
       return h(
-        'div',
-        { className: 'pc-detail pc-bubble', ref: bubbleRef },
-        h(
-          'section',
-          { className: 'pc-hero' },
-          h(
-            'div',
-            { className: 'pc-hero-left' },
-            h('p', { className: 'pc-goal' }, String(task.goal || '')),
-            h(
-              'div',
-              { className: 'pc-chip-row' },
-              h('span', { className: 'pc-chip tone-' + (STAGE_TONE[task.stage] || 'muted') }, stageLabel(t, task.stage)),
-              h('span', { className: 'pc-chip' }, t('label.candidates') + ' ' + String(candidates.length)),
-              h('span', { className: 'pc-chip' }, t('label.gaps') + ' ' + String(gaps)),
-              h('span', { className: 'pc-chip' }, t('label.updated') + ' ' + timeAgo(t, task.updatedAt)),
-              h('span', { className: 'pc-chip mono' }, String(task.id || ''))
-            ),
-            h(
-              'div',
-              { className: 'pc-hero-actions' },
-              cancelled ? null : h('button', { type: 'button', className: 'pc-btn ghost', disabled: busy, onClick: onCancel }, t('action.cancel')),
-              h('button', { type: 'button', className: 'pc-btn ghost danger', disabled: busy, onClick: onRemove }, t('action.remove'))
-            )
-          ),
-          h('div', { className: 'pc-hero-progress' }, h(VerticalProgress, { t, stage: task.stage }))
-        ),
+        'section',
+        { className: 'pc-task-card' + (open ? ' open' : '') },
         h(
           'div',
-          { className: 'pc-tabs', role: 'tablist' },
-          tabs.map((item) =>
+          {
+            className: 'pc-task-head',
+            role: 'button',
+            tabIndex: 0,
+            'aria-expanded': open,
+            onClick: onToggle,
+            onKeyDown: (event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault()
+                onToggle()
+              }
+            }
+          },
+          h(
+            'div',
+            { className: 'pc-task-head-main' },
+            h('div', { className: 'pc-task-title' }, String(base.goal || '')),
             h(
-              'button',
-              {
-                type: 'button',
-                role: 'tab',
-                key: item.id,
-                'aria-selected': tab === item.id,
-                className: 'pc-tab' + (tab === item.id ? ' active' : ''),
-                onClick: () => setTab(item.id)
-              },
-              item.label,
-              item.count !== null ? h('span', { className: 'pc-tab-count' }, String(item.count)) : null
+              'div',
+              { className: 'pc-task-meta' },
+              h('span', { className: 'pc-chip tone-' + (STAGE_TONE[base.stage] || 'muted') }, stageLabel(t, base.stage)),
+              h('span', {}, t('label.candidates') + ' ' + String(candidateCount)),
+              h('span', {}, t('label.gaps') + ' ' + String(gaps)),
+              h('span', {}, timeAgo(t, base.updatedAt)),
+              h('span', { className: 'pc-chip mono' }, String(base.id || ''))
             )
-          )
+          ),
+          open ? h('div', { className: 'pc-task-progress' }, h(VerticalProgress, { t, stage: base.stage })) : null,
+          chevron
         ),
-        tab === 'overview'
+        open
           ? h(
               'div',
-              { className: 'pc-pane' },
-              h('div', { className: 'pc-grid' }, h(SpecCard, { t, task }), h(ReportCard, { t, task })),
-              h('div', { className: 'pc-grid' }, h(DecisionCard, { t, task }), h(UnitsSummary, { t, task })),
-              h(HandoffSummary, { t, task })
+              { className: 'pc-task-body' },
+              error !== null
+                ? h(
+                    'div',
+                    { className: 'pc-error-banner' },
+                    h('span', {}, error),
+                    h('button', { type: 'button', className: 'pc-btn', onClick: onRetry }, t('page.retry'))
+                  )
+                : loading || task === null
+                  ? h(Skeleton)
+                  : h(
+                      React.Fragment,
+                      null,
+                      h(
+                        'div',
+                        { className: 'pc-tabs-bar' },
+                        h(
+                          'div',
+                          { className: 'pc-tabs', role: 'tablist' },
+                          tabs.map((entry) =>
+                            h(
+                              'button',
+                              {
+                                type: 'button',
+                                role: 'tab',
+                                key: entry.id,
+                                'aria-selected': tab === entry.id,
+                                className: 'pc-tab' + (tab === entry.id ? ' active' : ''),
+                                onClick: () => setTab(entry.id)
+                              },
+                              entry.label,
+                              entry.count !== null ? h('span', { className: 'pc-tab-count' }, String(entry.count)) : null
+                            )
+                          )
+                        ),
+                        h(
+                          'div',
+                          { className: 'pc-task-actions' },
+                          cancelled ? null : h('button', { type: 'button', className: 'pc-btn ghost', disabled: busy, onClick: onCancel }, t('action.cancel')),
+                          h('button', { type: 'button', className: 'pc-btn ghost danger', disabled: busy, onClick: onRemove }, t('action.remove'))
+                        )
+                      ),
+                      tab === 'overview'
+                        ? h(
+                            'div',
+                            { className: 'pc-pane' },
+                            h('div', { className: 'pc-grid' }, h(SpecCard, { t, task }), h(ReportCard, { t, task })),
+                            h('div', { className: 'pc-grid' }, h(DecisionCard, { t, task }), h(UnitsSummary, { t, task })),
+                            h(HandoffSummary, { t, task })
+                          )
+                        : tab === 'candidates'
+                          ? h(
+                              'div',
+                              { className: 'pc-pane' },
+                              candidateCount === 0
+                                ? h(Card, { title: t('tabs.candidates') }, h('p', { className: 'pc-note' }, t('value.noCandidates')))
+                                : h(Card, { title: t('tabs.candidates'), hint: String(candidateCount) }, h(CandidateList, { t, candidates: task.candidates, expanded, onToggle: () => setExpanded(!expanded) }))
+                            )
+                          : h(PlanPane, { t, task })
+                    )
             )
-          : tab === 'candidates'
-            ? h(
-                'div',
-                { className: 'pc-pane' },
-                candidates.length === 0
-                  ? h(Card, { title: t('tabs.candidates') }, h('p', { className: 'pc-note' }, t('value.noCandidates')))
-                  : h(Card, { title: t('tabs.candidates'), hint: String(candidates.length) }, h(CandidateList, { t, candidates, expanded, onToggle: () => setExpanded(!expanded) }))
-              )
-            : h(PlanPane, { t, task })
+          : null
       )
     }
 
@@ -941,46 +986,9 @@ window.__ModuleLoader__.load({
       const mounted = React.useRef(true)
       const selectedRef = React.useRef(null)
       const inflight = React.useRef(false)
-      const layoutRef = React.useRef(null)
-      const bubbleRef = React.useRef(null)
-      const taskRefs = React.useRef(new Map())
-      const [neck, setNeck] = React.useState(null)
+      const initialized = React.useRef(false)
 
       selectedRef.current = selectedId
-
-      React.useLayoutEffect(() => {
-        const layoutEl = layoutRef.current
-        const bubbleEl = bubbleRef.current
-        const buttonEl = selectedId === null ? null : taskRefs.current.get(selectedId)
-        if (!layoutEl || !bubbleEl || !buttonEl) {
-          setNeck(null)
-          return
-        }
-        const layoutRect = layoutEl.getBoundingClientRect()
-        const bubbleRect = bubbleEl.getBoundingClientRect()
-        const buttonRect = buttonEl.getBoundingClientRect()
-        const x = buttonRect.right - layoutRect.left
-        const y0 = buttonRect.top - layoutRect.top + 1
-        const y1 = buttonRect.top - layoutRect.top + buttonRect.height - 1
-        const bx = bubbleRect.left - layoutRect.left
-        const bTop = bubbleRect.top - layoutRect.top
-        const bBottom = bTop + bubbleRect.height
-        const flare = Math.min(10, Math.max(5, (y1 - y0) / 3))
-        const uy0 = Math.max(bTop + 3, y0 - flare)
-        const uy1 = Math.min(bBottom - 3, y1 + flare)
-        if (bx - x < 8 || y1 < bTop || y0 > bBottom) {
-          setNeck(null)
-          return
-        }
-        const d = [
-          'M', x, y0,
-          'C', x + 14, y0, bx - 18, uy0, bx + 9, uy0,
-          'L', bx + 9, uy1,
-          'C', bx - 18, uy1, x + 14, y1, x, y1,
-          'Z'
-        ].join(' ')
-        setNeck({ d, w: layoutRect.width, h: layoutRect.height })
-      }, [selectedId, snapshot.tasks, detail.task, tab, expanded])
 
       React.useEffect(() => {
         mounted.current = true
@@ -1014,13 +1022,21 @@ window.__ModuleLoader__.load({
           setSnapshot({ loading: false, error: null, tasks })
           setLastSync(Date.now())
           const current = selectedRef.current
-          const nextId = current !== null && tasks.some((task) => task.id === current) ? current : tasks.length > 0 ? tasks[0].id : null
-          if (nextId !== current) {
-            setSelectedId(nextId)
+          const currentExists = current !== null && tasks.some((task) => task.id === current)
+          if (current !== null && !currentExists) {
+            setSelectedId(null)
+            setDetail({ loading: false, error: null, task: null })
+            return
+          }
+          if (current === null && !initialized.current && tasks.length > 0) {
+            initialized.current = true
+            setSelectedId(tasks[0].id)
             setTab('overview')
             setExpanded(false)
+            await loadDetail(tasks[0].id)
+            return
           }
-          if (nextId !== null) await loadDetail(nextId)
+          if (current !== null) await loadDetail(current)
         } catch (error) {
           if (!mounted.current) return
           setSnapshot((current) => ({ ...current, loading: false, error: error && error.message ? error.message : String(error) }))
@@ -1047,15 +1063,20 @@ window.__ModuleLoader__.load({
         }
       }, [refresh])
 
-      const selectTask = React.useCallback(
+      const toggleTask = React.useCallback(
         (taskId) => {
+          if (taskId === selectedId) {
+            setSelectedId(null)
+            setDetail({ loading: false, error: null, task: null })
+            return
+          }
           setSelectedId(taskId)
           setTab('overview')
           setExpanded(false)
-          setDetail((current) => ({ ...current, loading: true, error: null }))
+          setDetail({ loading: true, error: null, task: null })
           loadDetail(taskId)
         },
-        [loadDetail]
+        [selectedId, loadDetail]
       )
 
       const runBusy = React.useCallback(async (fn) => {
@@ -1097,7 +1118,6 @@ window.__ModuleLoader__.load({
 
       const task = detail.task
       const isEmpty = snapshot.tasks.length === 0
-      const stageTask = task !== null ? task : snapshot.tasks.find((item) => item.id === selectedId) || null
 
       const header = h(
         'header',
@@ -1146,62 +1166,34 @@ window.__ModuleLoader__.load({
           {},
           h(
             'div',
-            { className: 'pc-layout', ref: layoutRef },
-            h(
-              'aside',
-              { className: 'pc-side' },
-              h('div', { className: 'pc-side-head' }, h('span', {}, t('page.tasks')), h('span', { className: 'pc-chip' }, String(snapshot.tasks.length))),
-              h(
-                'div',
-                { className: 'pc-side-list' },
-                snapshot.tasks.map((item) =>
-                  h(
-                    'button',
-                    {
-                      type: 'button',
-                      key: item.id,
-                      ref: (el) => {
-                        if (el) taskRefs.current.set(item.id, el)
-                        else taskRefs.current.delete(item.id)
-                      },
-                      className: 'pc-task' + (item.id === selectedId ? ' active' : ''),
-                      onClick: () => selectTask(item.id)
-                    },
-                    h('div', { className: 'pc-task-goal' }, String(item.goal || '')),
-                    h(
-                      'div',
-                      { className: 'pc-task-meta' },
-                      h('span', { className: 'pc-chip tone-' + (STAGE_TONE[item.stage] || 'muted') }, stageLabel(t, item.stage)),
-                      h('span', {}, String(item.candidates) + ' ' + t('label.candidates').toLowerCase()),
-                      h('span', {}, timeAgo(t, item.updatedAt))
-                    )
-                  )
-                )
-              )
-            ),
-            neck !== null
-              ? h(
-                  'svg',
-                  { className: 'pc-neck-svg', width: neck.w, height: neck.h, viewBox: '0 0 ' + neck.w + ' ' + neck.h, 'aria-hidden': true },
-                  h('path', { d: neck.d, fill: 'var(--dsw-alias-bg-layer-2)' })
-                )
-              : null,
-            h(
-              'div',
-              { className: 'pc-detail' },
-              detail.error !== null
-                ? h(
-                    'div',
-                    { className: 'pc-error-banner' },
-                    h('span', {}, detail.error),
-                    h('button', { type: 'button', className: 'pc-btn', onClick: () => loadDetail(selectedId) }, t('page.retry'))
-                  )
-                : task === null
-                  ? detail.loading
-                    ? h(Skeleton)
-                    : h('div', { className: 'pc-empty-detail' }, t('page.selectTask'))
-                  : h(Detail, { t, task, busy, tab, setTab, expanded, setExpanded, onCancel: cancelTask, onRemove: removeTask, bubbleRef })
-            )
+            { className: 'pc-list-head' },
+            h('span', {}, t('page.tasks')),
+            h('span', { className: 'pc-chip' }, String(snapshot.tasks.length))
+          ),
+          h(
+            'div',
+            { className: 'pc-tasks' },
+            snapshot.tasks.map((item) => {
+              const open = item.id === selectedId
+              return h(TaskCard, {
+                key: item.id,
+                t,
+                item,
+                task: open ? task : null,
+                open,
+                loading: open && detail.loading,
+                error: open ? detail.error : null,
+                busy,
+                tab,
+                setTab,
+                expanded,
+                setExpanded,
+                onToggle: () => toggleTask(item.id),
+                onCancel: cancelTask,
+                onRemove: removeTask,
+                onRetry: () => loadDetail(item.id)
+              })
+            })
           )
         )
       }
