@@ -128,7 +128,10 @@ async function ensureBranch(fork) {
 }
 
 async function upsertEntry() {
-  const content = readFileSync(join(repoRoot, 'market-entry.yml'), 'utf8')
+  const raw = readFileSync(join(repoRoot, 'market-entry.yml'), 'utf8')
+  // The registry entry should contain data only; drop our explanatory header.
+  const start = raw.indexOf('url:')
+  const content = start >= 0 ? raw.slice(start) : raw
   const encoded = Buffer.from(content, 'utf8').toString('base64')
   const path = `/repos/${OWNER}/${REGISTRY_REPO}/contents/${ENTRY_PATH}`
   let sha
