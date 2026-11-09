@@ -6,6 +6,8 @@
 
 ## 中文
 
+> 仓库：<https://github.com/lixian292/dsh-plugin-workbench> · 市场条目：[`market-entry.yml`](market-entry.yml)（仓库满 24 小时后提交 PR）
+
 **插件工作台**是 DeepSeek Harness（DSH）的插件创建编排器：它不急着写代码，而是先帮你判断"这个插件该不该自己写"。
 
 流程固定为五步：
@@ -80,7 +82,7 @@ plugin_manager install_bundle <此目录的绝对路径>
 2. 推送代码并给仓库添加 `dsh-plugin` topic；
 3. 向 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 提交 `data/plugins/lixian292__dsh-plugin-workbench.yml`（一个文件即全部投稿；README 由维护者生成，不要手改）；
 4. 可选：发布 npm 包（市场可显示下载量）；或在 GitHub Release 附预构建 `.tgz` 并在条目标 `tarball:`。
-5. 市场要求仓库**创建满 1 天**后才能通过 CI，请在仓库满 24 小时后再提 PR；条目内容见 [`market-entry.yml`](market-entry.yml)。
+5. 市场要求仓库**创建满 1 天**后才能通过 CI，请在仓库满 24 小时后再提 PR；条目内容在 [`market-entry.yml`](market-entry.yml)，可用 `node scripts/submit-market.mjs --token-file <file> --pr` 自动 fork + 提交 PR。
 
 ### 路线图
 
@@ -105,6 +107,8 @@ MIT。见 [LICENSE](LICENSE)。
 ---
 
 ## English
+
+> Repository: <https://github.com/lixian292/dsh-plugin-workbench> · Market entry: [`market-entry.yml`](market-entry.yml) (PR after the repository is 24h old)
 
 **Plugin Workbench** is a plugin-authoring orchestrator for DeepSeek Harness (DSH). It does not rush into writing code. It first decides whether the plugin should be written at all.
 
@@ -180,7 +184,7 @@ Repository: <https://github.com/lixian292/dsh-plugin-workbench>
 2. Push the code and add the `dsh-plugin` topic to the repository;
 3. Submit `data/plugins/lixian292__dsh-plugin-workbench.yml` to [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) (one file is the whole submission; the READMEs are generated, never edit them by hand);
 4. Optional: publish to npm (storefronts can show downloads), or attach a prebuilt `.tgz` to a GitHub release and declare `tarball:` in the entry.
-5. The market requires the repository to be **at least 1 day old** before CI passes — open the PR after the first 24 hours. The entry content is in [`market-entry.yml`](market-entry.yml).
+5. The market requires the repository to be **at least 1 day old** before CI passes — open the PR after the first 24 hours. The entry content is in [`market-entry.yml`](market-entry.yml); `node scripts/submit-market.mjs --token-file <file> --pr` forks the registry and opens the PR for you.
 
 ### License
 
