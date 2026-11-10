@@ -159,10 +159,7 @@ function prBody() {
     '- Category: `dev` (plugin authoring tooling).',
     '- What it does: a reuse-first plugin authoring workbench. It clarifies a plugin need, searches installed plugins, the curated market catalog and GitHub for reusable implementations, records the user decision (use as-is / DIY / reference only / from scratch), decomposes the remaining capability gaps, and runs structural verification before any installation. Long-running model work happens in the Host or a Creator sub-agent, not the parent conversation.',
     '- No build step: plain JavaScript (`index.js`, `client.js`, `host/*.js`). Zero runtime dependencies.',
-    '- Tests: `npm test` (node:test) and `npm run check`; CI ready in `docs/ci.yml` (workflow file not yet committed because the publishing token lacked the `workflow` scope).',
-    '',
-    'The repository was created less than 24 hours before this PR was opened, so the submission gate may report the age check until it is at least one day old.',
-    ''
+    '- Tests: `npm test` (node:test) and `npm run check`; CI ready in `docs/ci.yml` (workflow file not yet committed because the publishing token lacked the `workflow` scope).'
   ].join('\n')
 }
 
