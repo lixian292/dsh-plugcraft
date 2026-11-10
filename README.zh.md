@@ -71,7 +71,7 @@ dsh plugin --profile <profile> add <压缩包路径或链接>/dsh-plugcraft-<ver
 
 安装后打开左侧栏，点击 **插件工坊**（英文界面为 **Plugcraft**）；它与「插件」「插件市场」「上下文洞察」同组。
 
-> npm 包（`dsh-plugcraft`）计划中；首次发布时 npm 注册不可用，因此现阶段以 GitHub 和 Release 压缩包为安装渠道。
+> npm 包（`dsh-plugcraft`）计划中但尚未发布，现阶段以 GitHub 和 Release 压缩包为安装渠道。
 
 ## 快速上手
 
@@ -193,7 +193,7 @@ CI 在 Node 22 / 24 上运行 `check` + `test`（`.github/workflows/ci.yml`）�
 - 面向 DSH Web GUI，没有纯 CLI 模式。
 - 页面是本地工具：一个 DSH home 一份工作台状态，不是团队服务。
 - 安装永远需要用户确认，工作台不会静默安装。
-- 市场收录待完成：注册表要求仓库创建满 24 小时。
+- 市场收录：已向 awesome-dsh-plugin 提交条目，等待维护者审核。
 - `verify` 只做结构校验，不构成对生成代码的安全审计。
 
 ## 贡献

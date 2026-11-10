@@ -71,7 +71,7 @@ dsh plugin --profile <profile> add <path-or-url-to>/dsh-plugcraft-<version>.tgz
 
 After installing, open the sidebar and click **Plugcraft** (Chinese UI: 插件工作台). It sits next to *Plugins*, *Market* and *Context insights*.
 
-> An npm package (`dsh-plugcraft`) is planned; npm registration was unavailable when the first release was cut, so GitHub and release tarballs are the supported channels for now.
+> An npm package (`dsh-plugcraft`) is planned but not published yet, so GitHub and release tarballs are the supported channels for now.
 
 ## Quick start
 
@@ -193,7 +193,7 @@ CI runs `check` and `test` on Node 22 and 24 (`.github/workflows/ci.yml`).
 - Designed for the DSH Web GUI; there is no CLI-only mode.
 - The page is a local tool: one workbench state per DSH home, not a team service.
 - Installation is always user-confirmed; the workbench never installs silently.
-- Marketplace listing is pending: the registry requires the repository to be at least 24 hours old.
+- Marketplace listing: the entry has been submitted to awesome-dsh-plugin and is pending maintainer review.
 - The `verify` action checks structure only; it is not a security review of generated code.
 
 ## Contributing
